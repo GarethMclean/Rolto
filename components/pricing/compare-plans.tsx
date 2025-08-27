@@ -67,135 +67,135 @@ export default function ComparePlans() {
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">AI Chatbot</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Chatbot Training</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Basic Analytics</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Chatbot Notifications</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Lead Qualification</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Email Support</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Chat Support</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Human Handoff</td>
                 <td className="w-40 p-5 text-center md:w-auto">—</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Hide Branding</td>
                 <td className="w-40 p-5 text-center md:w-auto">—</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Advanced Analytics</td>
                 <td className="w-40 p-5 text-center md:w-auto">—</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Customize Chat Widget</td>
                 <td className="w-40 p-5 text-center md:w-auto">—</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
                 <td className="sticky left-0 z-20 w-40 bg-accent p-5 font-medium md:w-1/4">Priority Support</td>
                 <td className="w-40 p-5 text-center md:w-auto">—</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
               <tr className="divide-x divide-border">
@@ -203,7 +203,7 @@ export default function ComparePlans() {
                 <td className="w-40 p-5 text-center md:w-auto">—</td>
                 <td className="w-40 p-5 text-center md:w-auto">—</td>
                 <td className="w-40 p-5 text-center md:w-auto">
-                  <CircleCheck className="mx-auto h-5 w-5 text-green-500" />
+                  <CircleCheck className="mx-auto size-5 text-green-500" />
                 </td>
               </tr>
             </tbody>
