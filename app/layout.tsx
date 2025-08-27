@@ -117,7 +117,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
         {/* Basic Favicon - Fallback for all browsers */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         
         {/* Favicon - Theme-Aware with Light/Dark Mode Support */}
         {/* Light Theme Favicons */}
