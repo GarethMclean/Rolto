@@ -137,7 +137,7 @@ export function PricingCards({ userId, subscriptionPlan, plans }: PricingCardsPr
                   className="flex items-start text-muted-foreground"
                   key={feature}
                 >
-                  <Icons.close className="mr-3 shrink-0 size-5" />
+                  <Icons.close className="mr-3 size-5 shrink-0" />
                   <p>{feature}</p>
                 </li>
               ))}
@@ -215,7 +215,7 @@ export function PricingCards({ userId, subscriptionPlan, plans }: PricingCardsPr
           ))}
         </div>
 
-        <p className="mt-3 text-center text-base text-muted-foreground text-balance">
+        <p className="mt-3 text-center text-base text-balance text-muted-foreground">
           Email{" "}
           <a
             className="font-medium text-primary hover:underline"
