@@ -98,10 +98,26 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Rolto" />
+        
+        {/* SEO and Search Engine Optimization */}
+        <meta name="google-site-verification" content="your-verification-code" />
+        <meta name="msvalidate.01" content="your-bing-verification-code" />
+        <meta name="yandex-verification" content="your-yandex-verification-code" />
+        
+        {/* Performance and Core Web Vitals */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        
+        {/* Social Media and Branding */}
+        <meta name="application-name" content="Rolto" />
+        <meta name="msapplication-tooltip" content="Rolto - AI Conversational Platform" />
 
         {/* Canonical URL */}
         <link rel="canonical" href="https://rolto.io" />
 
+        {/* Basic Favicon - Fallback for all browsers */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        
         {/* Favicon - Theme-Aware with Light/Dark Mode Support */}
         {/* Light Theme Favicons */}
         <link rel="icon" href="/favicon-light-16x16.png" media="(prefers-color-scheme: light)" type="image/png" sizes="16x16" />

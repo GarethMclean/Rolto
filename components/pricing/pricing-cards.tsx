@@ -5,7 +5,6 @@ import Link from "next/link";
 import { UserSubscriptionPlan } from "@/types";
 
 import { SubscriptionPlan } from "@/types/index";
-import { pricingData } from "@/config/subscriptions";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -18,9 +17,10 @@ import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
 interface PricingCardsProps {
   userId?: string;
   subscriptionPlan?: UserSubscriptionPlan;
+  plans: SubscriptionPlan[];
 }
 
-export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
+export function PricingCards({ userId, subscriptionPlan, plans }: PricingCardsProps) {
   const isYearlyDefault =
     !subscriptionPlan?.stripeCustomerId || subscriptionPlan.interval === "year"
       ? true
@@ -34,15 +34,15 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
 
   const PricingCard = ({ offer }: { offer: SubscriptionPlan }) => {
     return (
-      <div
-        className={cn(
-          "relative flex flex-col overflow-hidden rounded-3xl border shadow-sm",
-          offer.title.toLocaleLowerCase() === "pro"
-            ? "-m-0.5 border-2 border-purple-400"
-            : "",
-        )}
-        key={offer.title}
-      >
+              <div
+          className={cn(
+            "relative flex flex-col overflow-hidden rounded-3xl border shadow-sm",
+            offer.title === "Growth"
+              ? "border-2 border-primary"
+              : "",
+          )}
+          key={offer.title}
+        >
         <div className="min-h-[150px] items-start space-y-4 bg-muted/50 p-6">
           <p className="flex font-urban text-sm font-bold uppercase tracking-wider text-muted-foreground">
             {offer.title}
@@ -77,21 +77,67 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
         </div>
 
         <div className="flex h-full flex-col justify-between gap-16 p-6">
-          <ul className="space-y-2 text-left text-sm font-medium leading-normal">
-            {offer.benefits.map((feature) => (
-              <li className="flex items-start gap-x-3" key={feature}>
-                <Icons.check className="size-5 shrink-0 text-purple-500" />
-                <p>{feature}</p>
-              </li>
-            ))}
+          <ul className="space-y-3 text-left text-sm font-medium leading-normal">
+            {/* Usage Limits - Professional structured format at the top */}
+            <li className="mb-4">
+              <div className="space-y-2">
+                {offer.benefits
+                  .filter(feature =>
+                    feature.includes('AI conversations') ||
+                    feature.includes('document uploads') ||
+                    feature.includes('chatbot')
+                  )
+                  .map((feature) => {
+                    const label = feature.includes('AI conversations') ? 'Conversations' :
+                                feature.includes('document uploads') ? 'Documents' :
+                                feature.includes('chatbot') ? 'Chatbots' : '';
+                    const value = feature.match(/\d+/)?.[0] || '';
+                    const unit = feature.includes('AI conversations') ? '/month' : '';
+                    
+                    return (
+                      <div key={feature} className="flex items-center justify-between">
+                        <span className="text-muted-foreground">{label}:</span>
+                        <span className="text-lg font-bold">{value}{unit}</span>
+                      </div>
+                    );
+                  })}
+              </div>
+            </li>
 
+            {/* Divider line for ALL plans - between usage limits and features */}
+            <li className="border-t pt-2">
+              {/* Plan inclusion notice for Growth and Pro - AFTER USAGE LIMITS */}
+              {(offer.title === "Growth" || offer.title === "Pro") && (
+                <p className="font-bold text-primary">
+                  {offer.title === "Growth"
+                    ? "Includes everything from Starter plan"
+                    : "Includes everything from Growth plan"}
+                </p>
+              )}
+            </li>
+
+            {/* Regular Features */}
+            {offer.benefits
+              .filter(feature =>
+                !feature.includes('AI conversations') &&
+                !feature.includes('document uploads') &&
+                !feature.includes('chatbot')
+              )
+              .map((feature) => (
+                <li className="flex items-start gap-x-3" key={feature}>
+                  <Icons.check className="size-5 shrink-0 text-purple-500" />
+                  <p>{feature}</p>
+                </li>
+              ))}
+
+            {/* Limitations */}
             {offer.limitations.length > 0 &&
               offer.limitations.map((feature) => (
                 <li
                   className="flex items-start text-muted-foreground"
                   key={feature}
                 >
-                  <Icons.close className="mr-3 size-5 shrink-0" />
+                  <Icons.close className="mr-3 shrink-0 size-5" />
                   <p>{feature}</p>
                 </li>
               ))}
@@ -120,12 +166,8 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
             )
           ) : (
             <Button
-              variant={
-                offer.title.toLocaleLowerCase() === "pro"
-                  ? "default"
-                  : "outline"
-              }
-              rounded="full"
+              className="w-full"
+              variant={offer.title === "Growth" ? "default" : "outline"}
               onClick={() => setShowLeadCaptureModal(true)}
             >
               Start Free Now
@@ -152,14 +194,14 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
           >
             <ToggleGroupItem
               value="yearly"
-              className="rounded-full px-5 data-[state=on]:!bg-primary data-[state=on]:!text-primary-foreground"
+              className="rounded-full px-5 text-sm font-medium transition-colors data-[state=on]:!bg-primary data-[state=on]:!text-primary-foreground data-[state=off]:text-muted-foreground"
               aria-label="Toggle yearly billing"
             >
               Yearly (-20%)
             </ToggleGroupItem>
             <ToggleGroupItem
               value="monthly"
-              className="rounded-full px-5 data-[state=on]:!bg-primary data-[state=on]:!text-primary-foreground"
+              className="rounded-full px-5 text-sm font-medium transition-colors data-[state=on]:!bg-primary data-[state=on]:!text-primary-foreground data-[state=off]:text-muted-foreground"
               aria-label="Toggle monthly billing"
             >
               Monthly
@@ -168,12 +210,12 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
         </div>
 
         <div className="grid gap-5 bg-inherit py-5 lg:grid-cols-3">
-          {pricingData.slice(0, 3).map((offer) => (
+          {plans.slice(0, 3).map((offer) => (
             <PricingCard offer={offer} key={offer.title} />
           ))}
         </div>
 
-        <p className="mt-3 text-balance text-center text-base text-muted-foreground">
+        <p className="mt-3 text-center text-base text-muted-foreground text-balance">
           Email{" "}
           <a
             className="font-medium text-primary hover:underline"
