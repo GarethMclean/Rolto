@@ -8,6 +8,10 @@
 </p>
 
 <p align="center">
+  🚀 <strong>Deployment Test:</strong> Successfully reverted to commit 1f93699 and ready for deployment!
+</p>
+
+<p align="center">
   <a href="https://twitter.com/miickasmt">
     <img src="https://img.shields.io/twitter/follow/miickasmt?style=flat&label=miickasmt&logo=twitter&color=0bf&logoColor=fff" alt="Mickasmt Twitter follower count" />
   </a>
