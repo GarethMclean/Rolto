@@ -2,7 +2,7 @@
 
 import { PlansRow } from "@/types";
 import { CircleCheck, Info } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { comparePlans, plansColumns } from "@/config/subscriptions";
 import {
@@ -12,10 +12,13 @@ import {
 } from "@/components/ui/popover";
 import { HeaderSection } from "@/components/shared/header-section";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
+import { Button } from "@/components/ui/button";
+import { ModalContext } from "@/components/modals/providers";
 
 export function ComparePlans() {
   const [dynamicComparePlans, setDynamicComparePlans] = useState<PlansRow[]>(comparePlans);
   const [loading, setLoading] = useState(true);
+  const { setShowLeadCaptureModal } = useContext(ModalContext);
 
   useEffect(() => {
     const fetchPlansData = async () => {
@@ -114,7 +117,18 @@ export function ComparePlans() {
                   key={col}
                   className="sticky z-10 w-40 bg-accent p-5 font-heading text-xl capitalize tracking-wide md:w-auto lg:top-14 lg:text-2xl"
                 >
-                  {col}
+                  <div className="flex flex-col items-center gap-3">
+                    <span>{col}</span>
+                    <Button
+                      variant="default"
+                      size="sm"
+                      rounded="full"
+                      onClick={() => setShowLeadCaptureModal(true)}
+                      className="w-full max-w-32"
+                    >
+                      Start Free Now
+                    </Button>
+                  </div>
                 </th>
               ))}
             </tr>

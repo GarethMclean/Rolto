@@ -64,7 +64,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
       <div
         className={cn(
           "relative flex flex-col overflow-hidden rounded-3xl border shadow-sm",
-          offer.title.toLocaleLowerCase() === "pro"
+          offer.title.toLocaleLowerCase() === "growth"
             ? "-m-0.5 border-2 border-purple-400"
             : "",
         )}
@@ -166,7 +166,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
           ) : (
             <Button
               variant={
-                offer.title.toLocaleLowerCase() === "pro"
+                offer.title.toLocaleLowerCase() === "growth"
                   ? "default"
                   : "outline"
               }
