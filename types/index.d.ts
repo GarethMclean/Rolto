@@ -47,6 +47,7 @@ export type DocsConfig = {
 export type SubscriptionPlan = {
   title: string;
   description: string;
+  usageLimits: { label: string; value: string }[];
   benefits: string[];
   limitations: string[];
   prices: {
