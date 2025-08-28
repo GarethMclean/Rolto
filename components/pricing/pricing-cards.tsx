@@ -1,5 +1,4 @@
-or Coeed to 
-instead of just saying conversations can be ions/000"use client";
+"use client";
 
 import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
