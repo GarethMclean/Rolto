@@ -1,5 +1,8 @@
+"use client";
+
 import { PlansRow } from "@/types";
 import { CircleCheck, Info } from "lucide-react";
+import { useEffect, useState, useContext } from "react";
 
 import { comparePlans, plansColumns } from "@/config/subscriptions";
 import {
@@ -9,8 +12,86 @@ import {
 } from "@/components/ui/popover";
 import { HeaderSection } from "@/components/shared/header-section";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
+import { Button } from "@/components/ui/button";
+import { ModalContext } from "@/components/modals/providers";
 
 export function ComparePlans() {
+  const [dynamicComparePlans, setDynamicComparePlans] = useState<PlansRow[]>(comparePlans);
+  const [loading, setLoading] = useState(true);
+  const { setShowLeadCaptureModal } = useContext(ModalContext);
+
+  useEffect(() => {
+    const fetchPlansData = async () => {
+      try {
+        const response = await fetch('/api/plans');
+        if (response.ok) {
+          const plans = await response.json();
+          
+          // Update the usage limits in the comparison table with database data
+          const updatedComparePlans = [...comparePlans];
+          
+          // Update Monthly AI Conversations
+          const conversationsRow = updatedComparePlans.find(row => row.feature === "Monthly AI Conversations");
+          if (conversationsRow) {
+            plans.forEach((plan: any) => {
+              const conversationLimit = plan.usageLimits.find((limit: any) => 
+                limit.label.includes("AI Conversations")
+              );
+              if (conversationLimit) {
+                const planKey = plan.title.toLowerCase() as keyof PlansRow;
+                if (planKey in conversationsRow) {
+                  (conversationsRow as any)[planKey] = conversationLimit.value;
+                }
+              }
+            });
+          }
+
+          // Update Chatbots
+          const chatbotsRow = updatedComparePlans.find(row => row.feature === "Chatbots");
+          if (chatbotsRow) {
+            plans.forEach((plan: any) => {
+              const chatbotLimit = plan.usageLimits.find((limit: any) => 
+                limit.label.includes("Chatbots")
+              );
+              if (chatbotLimit) {
+                const planKey = plan.title.toLowerCase() as keyof PlansRow;
+                if (planKey in chatbotsRow) {
+                  (chatbotsRow as any)[planKey] = chatbotLimit.value;
+                }
+              }
+            });
+          }
+
+          // Update Document Uploads
+          const documentsRow = updatedComparePlans.find(row => row.feature === "Document Uploads");
+          if (documentsRow) {
+            plans.forEach((plan: any) => {
+              const documentLimit = plan.usageLimits.find((limit: any) => 
+                limit.label.includes("Documents")
+              );
+              if (documentLimit) {
+                const planKey = plan.title.toLowerCase() as keyof PlansRow;
+                if (planKey in documentsRow) {
+                  (documentsRow as any)[planKey] = documentLimit.value;
+                }
+              }
+            });
+          }
+
+          setDynamicComparePlans(updatedComparePlans);
+        } else {
+          console.error('Failed to fetch plans from database, using fallback data');
+        }
+      } catch (error) {
+        console.error('Error fetching plans data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPlansData();
+  }, []);
+
   const renderCell = (value: string | boolean | null) => {
     if (value === null) return "—";
     if (typeof value === "boolean")
@@ -36,13 +117,24 @@ export function ComparePlans() {
                   key={col}
                   className="sticky z-10 w-40 bg-accent p-5 font-heading text-xl capitalize tracking-wide md:w-auto lg:top-14 lg:text-2xl"
                 >
-                  {col}
+                  <div className="flex flex-col items-center gap-3">
+                    <span>{col}</span>
+                    <Button
+                      variant="default"
+                      size="sm"
+                      rounded="full"
+                      onClick={() => setShowLeadCaptureModal(true)}
+                      className="w-full max-w-32"
+                    >
+                      Start Free Now
+                    </Button>
+                  </div>
                 </th>
               ))}
             </tr>
           </thead>
           <tbody className="divide-x divide-border border">
-            {comparePlans.map((row: PlansRow, index: number) => (
+            {dynamicComparePlans.map((row: PlansRow, index: number) => (
               <tr key={index} className="divide-x divide-border border">
                 <td
                   data-tip={row.tooltip ? row.tooltip : ""}

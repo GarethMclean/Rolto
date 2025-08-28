@@ -11,7 +11,7 @@ import { PricingFaq } from "@/components/pricing/pricing-faq";
 export const metadata = constructMetadata({
   title: "Pricing – Rolto",
   description:
-    "Simple, transparent pricing for Rolto's AI-powered conversational platform. Start with a 14-day free trial, then choose from Starter, Pro, Vertical Pro, or Enterprise plans.",
+    "Simple, transparent pricing for Rolto's AI-powered conversational platform. Start with a 14-day free trial, then choose from Starter, Growth, Pro, or Enterprise plans.",
 });
 
 export default async function PricingPage() {

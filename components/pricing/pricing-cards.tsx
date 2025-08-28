@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { UserSubscriptionPlan } from "@/types";
 
@@ -26,7 +26,34 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
       ? true
       : false;
   const [isYearly, setIsYearly] = useState<boolean>(!!isYearlyDefault);
+  const [plans, setPlans] = useState<SubscriptionPlan[]>([]);
+  const [loading, setLoading] = useState(true);
   const { setShowLeadCaptureModal } = useContext(ModalContext);
+
+  // Fetch plans from database
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const response = await fetch('/api/plans');
+        if (response.ok) {
+          const data = await response.json();
+          setPlans(data);
+        } else {
+          console.error('Failed to fetch plans from database, using fallback data');
+          // Fallback to hardcoded data if API fails
+          setPlans(pricingData);
+        }
+      } catch (error) {
+        console.error('Error fetching plans from database:', error);
+        // Fallback to hardcoded data if API fails
+        setPlans(pricingData);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPlans();
+  }, []);
 
   const toggleBilling = () => {
     setIsYearly(!isYearly);
@@ -37,7 +64,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
       <div
         className={cn(
           "relative flex flex-col overflow-hidden rounded-3xl border shadow-sm",
-          offer.title.toLocaleLowerCase() === "pro"
+          offer.title.toLocaleLowerCase() === "growth"
             ? "-m-0.5 border-2 border-purple-400"
             : "",
         )}
@@ -76,8 +103,25 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
           ) : null}
         </div>
 
-        <div className="flex h-full flex-col justify-between gap-16 p-6">
-          <ul className="space-y-2 text-left text-sm font-medium leading-normal">
+        <div className="flex h-full flex-col gap-6 p-6">
+          {/* Usage Limits Section */}
+          <div className="space-y-3">
+            <ul className="space-y-2 text-left text-sm font-medium leading-normal">
+              {offer.usageLimits.map((limit) => (
+                <li className="flex items-center justify-between" key={limit.label}>
+                  <span className="text-muted-foreground">{limit.label}</span>
+                  <span className="font-semibold text-foreground">{limit.value}</span>
+                </li>
+              ))}
+            </ul>
+            
+            {/* Subtle line separator */}
+            <div className="border-t border-border pt-2"></div>
+          </div>
+
+          {/* Features Section - Aligned to top */}
+          <div className="flex-1">
+            <ul className="space-y-2 text-left text-sm font-medium leading-normal">
             {offer.benefits.map((feature) => (
               <li className="flex items-start gap-x-3" key={feature}>
                 <Icons.check className="size-5 shrink-0 text-purple-500" />
@@ -96,6 +140,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                 </li>
               ))}
           </ul>
+          </div>
 
           {userId && subscriptionPlan ? (
             offer.title === "Starter" ? (
@@ -121,7 +166,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
           ) : (
             <Button
               variant={
-                offer.title.toLocaleLowerCase() === "pro"
+                offer.title.toLocaleLowerCase() === "growth"
                   ? "default"
                   : "outline"
               }
@@ -167,11 +212,19 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
           </ToggleGroup>
         </div>
 
-        <div className="grid gap-5 bg-inherit py-5 lg:grid-cols-3">
-          {pricingData.slice(0, 3).map((offer) => (
-            <PricingCard offer={offer} key={offer.title} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="grid gap-5 bg-inherit py-5 lg:grid-cols-3">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-96 animate-pulse rounded-3xl bg-muted/50" />
+            ))}
+          </div>
+        ) : (
+          <div className="grid gap-5 bg-inherit py-5 lg:grid-cols-3">
+            {plans.slice(0, 3).map((offer) => (
+              <PricingCard offer={offer} key={offer.title} />
+            ))}
+          </div>
+        )}
 
         <p className="mt-3 text-balance text-center text-base text-muted-foreground">
           Email{" "}

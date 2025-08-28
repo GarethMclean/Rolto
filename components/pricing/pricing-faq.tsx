@@ -12,31 +12,31 @@ const pricingFaqData = [
     id: "item-1",
     question: "What is included in the 14-day trial?",
     answer:
-      "Our 14-day trial includes 250 AI conversations, 1 website, basic chat widget, basic analytics, and standard support. No credit card is required to start your trial. After 14 days, you'll need to upgrade to a paid plan to continue using Rolto. Trial limitations include Rolto logo, no integrations, and 1 document upload.",
+      "Our 14-day trial includes 250 AI conversations, 1 chatbot, basic chat widget, basic analytics, and standard support. No credit card is required to start your trial. After 14 days, you'll need to upgrade to a paid plan to continue using Rolto. Trial limitations include Rolto logo, no integrations, and limited document uploads.",
   },
   {
     id: "item-2",
     question: "How much does the Starter plan cost?",
     answer:
-      "The Starter plan is priced at $15 per month or $144 per year (save 20%). It includes 1,000 AI conversations per month, 1 website, 1 document upload, basic customization, email transcript export, basic analytics, basic chat widget, and standard support.",
+      "The Starter plan is priced at $19 per month or $182 per year (save 20%). It includes 500 AI conversations per month, 1 chatbot, 2 document uploads, AI chatbot training, basic analytics, lead qualification, and email & chat support.",
   },
   {
     id: "item-3",
-    question: "What is the price of the Pro plan?",
+    question: "What is the Growth plan?",
     answer:
-      "The Pro plan is available for $39 per month or $374 per year (save 20%). It offers 5,000 AI conversations per month, 3 websites, 5 document uploads, custom branding, analytics, agent handoff, external integrations, custom chat widget, workflow automation, and priority support.",
+      "The Growth plan costs $39 per month or $374 per year (save 20%). It includes everything in Starter plus 1,000 AI conversations per month, 2 chatbots, 5 document uploads, human handoff, advanced analytics, hide branding, customize chat widget, and priority support.",
   },
   {
     id: "item-4",
-    question: "What does the Vertical Pro plan include?",
+    question: "What does the Pro plan include?",
     answer:
-      "The Vertical Pro plan costs $79 per month or $758 per year (save 20%). It includes 20,000 AI conversations per month, unlimited websites, 20 document uploads, industry templates, advanced analytics, agent handoff, automation triggers, SMS/email follow-ups, custom chat widget, advanced workflow automation, and priority support.",
+      "The Pro plan costs $79 per month or $758 per year (save 20%). It includes everything in Growth plus 5,000 AI conversations per month, 3 chatbots, 10 document uploads, live support availability, and no limitations on features.",
   },
   {
     id: "item-5",
     question: "Do you offer annual subscription plans?",
     answer:
-      "Yes, we offer annual subscription plans with significant savings. The Starter Annual plan is $144 per year (save $36), the Pro Annual plan is $374 per year (save $94), and the Vertical Pro Annual plan is $758 per year (save $190). All annual plans include a 20% discount compared to monthly pricing.",
+      "Yes, we offer annual subscription plans with significant savings. The Starter Annual plan is $182 per year (save $46), the Growth Annual plan is $374 per year (save $94), and the Pro Annual plan is $758 per year (save $190). All annual plans include a 20% discount compared to monthly pricing.",
   },
   {
     id: "item-6",
@@ -54,19 +54,19 @@ const pricingFaqData = [
     id: "item-8",
     question: "What kind of support do you offer?",
     answer:
-      "Trial users get standard support, Starter plan users get standard support, Pro and Vertical Pro users get priority support, and Enterprise customers get 24/7 dedicated support with SLAs.",
+      "Trial and Starter plan users get standard support via email and chat. Growth and Pro users get priority support with faster response times. All plans include comprehensive documentation and help resources.",
   },
   {
     id: "item-9",
     question: "What is included in the Enterprise plan?",
     answer:
-      "The Enterprise plan starts at $249 per month with custom annual pricing. It includes 75,000+ AI conversations per month, white-labeling, SLAs, API access, agent handoff, custom integrations, compliance logging, custom chat widget, and 24/7 priority support.",
+      "The Enterprise plan starts at $249 per month with custom annual pricing. It includes 75,000+ AI conversations per month, unlimited chatbots, white-labeling, SLAs, API access, custom integrations, compliance logging, and 24/7 dedicated support.",
   },
   {
     id: "item-10",
-    question: "Do you offer industry-specific templates?",
+    question: "How do chatbot limits work?",
     answer:
-      "Yes, our Vertical Pro and Enterprise plans include industry templates for various sectors. We also offer paid add-on template packs for niche industries that can be purchased separately.",
+      "Each plan includes a specific number of chatbots you can create and deploy. Starter includes 1 chatbot, Growth includes 2 chatbots, and Pro includes 3 chatbots. Each chatbot can be customized and trained with your specific content and deployed on your websites.",
   },
 ];
 
